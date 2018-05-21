@@ -141,7 +141,7 @@ class randart:
 		#apply additional bonuses to items. ~50% of items will have no additional bonuses.
 		#roll for poison on weapons
 		if self.artifact_class == "Weapon" and d100() < 6:
-			i = discrete_exp_fix_N(len(list(poisons.keys())), 0.10)
+			i = discrete_exp_fix_N(len(list(poisons.keys()))-1, 0.10)
 			key = sorted(list(poisons.keys()))[i]
 			if not self.brand == "":
 				self.brand += ", "
