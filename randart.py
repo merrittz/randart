@@ -25,10 +25,10 @@ These items are meant to be rolled up when a rare item or (potentially) valuable
 of exponential probability distributions which are determined by book prices for items. All named items are taken from
 Ultimate Equipment.
 
-Item types include rings, weapons, armor, shields, staves, rods, and wonderous items. Item modifiers include enchantment
+Item types include rings, weapons, armor, shields, staves, rods, and wondrous items. Item modifiers include enchantment
 bonuses for weapons and shields as well as magical properties. Some weapons will have poison effects. All items may also
 confer energy resistances, damage reduction, stat bonuses (and penalties). The probabilities of these bonuses are related
-to the corresponding book prices. Wonderous items are always generated without modification.
+to the corresponding book prices. Wondrous items are always generated without modification.
 
 There is a fixed 5% chance that a random type item will be a cursed item instead. There is also a small chance that
 worthless items such as peanuts or sticks may be generated as well.
@@ -75,7 +75,7 @@ class randart:
 		elif index == 2:
 			self.artifact_class = "Armor"
 		elif index == 3:
-			self.artifact_class = "Wonderous"
+			self.artifact_class = "Wondrous"
 		elif index == 4:
 			self.artifact_class = "Shield"
 		elif index == 5:
@@ -87,7 +87,7 @@ class randart:
 			self.artifact_class = "Cursed!"
 	
 	def roll_randart(self):
-		index = ["Ring", "Weapon", "Armor", "Wonderous", "Shield", "Staff", "Rod", "Cursed!"].index(self.artifact_class)
+		index = ["Ring", "Weapon", "Armor", "Wondrous", "Shield", "Staff", "Rod", "Cursed!"].index(self.artifact_class)
 		
 		if self.artifact_class == "Ring":
 			i = discrete_exp_fix_N(len(list(rings.keys()))-1, 0.00125)
@@ -107,7 +107,7 @@ class randart:
 			self.enchantment_bonus = discrete_exp_fix_N(5, 0.04)
 			self.brand = random.choice(armor_brands[discrete_exp_fix_N(5, 0.04)])
 		
-		if self.artifact_class == "Wonderous":
+		if self.artifact_class == "Wondrous":
 			i = discrete_exp_fix_N(len(list(wonders.keys()))-1, 0.00025)
 			key = sorted(list(wonders.keys()))[i]
 			if key == '0':
@@ -202,7 +202,7 @@ def main():
 	[3] - Armor
 	[4] - Shield
 	[5] - Ring
-	[6] - Wonderous Item
+	[6] - Wondrous Item
 	[7] - Staff
 	[8] - Rod
 	[9] - Cursed Item
@@ -210,7 +210,7 @@ def main():
 	[q] - I quit!
 	
 	"""
-	classes = ["Weapon", "Armor", "Shield", "Ring", "Wonderous", "Staff", "Rod", "Cursed!"]
+	classes = ["Weapon", "Armor", "Shield", "Ring", "Wondrous", "Staff", "Rod", "Cursed!"]
 	while True:
 		try:
 			choice = raw_input(">")
